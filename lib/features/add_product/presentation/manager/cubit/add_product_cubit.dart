@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub_dashboard/core/repos/images_repo/image_repo.dart';
 import 'package:fruit_hub_dashboard/core/repos/product_repo/product_repo.dart';
-import 'package:fruit_hub_dashboard/features/add_product/domain/add_product_input_entity.dart';
+import 'package:fruit_hub_dashboard/features/add_product/domain/product_entity.dart';
 
 part 'add_product_state.dart';
 
@@ -11,7 +11,7 @@ class AddProductCubit extends Cubit<AddProductState> {
   AddProductCubit(this.imageRepo, this.productRepo)
     : super(AddProductInitial());
 
-  Future<void> addProduct(AddProductInputEntity addProductInputEntity) async {
+  Future<void> addProduct(ProductEntity addProductInputEntity) async {
     emit(AddProductLoading());
 
     // 1. first upload image
