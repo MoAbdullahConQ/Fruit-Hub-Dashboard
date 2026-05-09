@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:fruit_hub_dashboard/features/add_product/data/models/review_model.dart';
 import 'package:fruit_hub_dashboard/features/add_product/domain/add_product_input_entity.dart';
+import 'package:fruit_hub_dashboard/features/add_product/domain/review_entity.dart';
 
 class AddProductInputModel {
   final String name;
@@ -16,6 +18,7 @@ class AddProductInputModel {
   final num avgRating = 0;
   final num ratingCount = 0;
   final int unitAmount;
+  final List<ReviewEntity> reviews;
 
   AddProductInputModel({
     required this.name,
@@ -29,6 +32,7 @@ class AddProductInputModel {
     required this.numberOfCalories,
     required this.unitAmount,
     required this.isOrganic,
+    required this.reviews,
   });
 
   factory AddProductInputModel.fromEntity(
@@ -46,6 +50,9 @@ class AddProductInputModel {
       numberOfCalories: addProductInputEntity.numberOfCalories,
       unitAmount: addProductInputEntity.unitAmount,
       isOrganic: addProductInputEntity.isOrganic,
+      reviews: addProductInputEntity.reviews
+          // .map((e) => ReviewModel.fromEntity(e))
+          // .toList(),
     );
   }
 
@@ -61,6 +68,7 @@ class AddProductInputModel {
       'isOrganic': isOrganic,
       'numberOfCalories': numberOfCalories,
       'unitAmount': unitAmount,
+      'reviews': reviews.map((e) => ReviewModel.fromEntity(e)).toList(),
     };
   }
 }
