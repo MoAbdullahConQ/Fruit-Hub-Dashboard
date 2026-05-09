@@ -22,6 +22,8 @@ class AddProductCubit extends Cubit<AddProductState> {
         emit(AddProductFailure(failure.message));
       },
       (imageUrl) async {
+        addProductInputEntity.imageUrl = imageUrl;
+
         var result = await productRepo.addProduct(addProductInputEntity);
         result.fold(
           (failure) {
